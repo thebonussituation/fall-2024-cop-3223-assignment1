@@ -48,7 +48,7 @@ double calculateFoundational()
 
 double calculateHeight()
 {
-	double diameter = calculateFoundational()
+	double diameter = calculateFoundational();
 	printf("The height is = %.1lf", diameter);
 }
 
