@@ -17,39 +17,131 @@
 
 #define PI 3.14159
 
-// Here is our helper function. It will perform the actual calculations for the distance (diameter between the two points), 
-// which will be used later in other functions.
+// Following this is the setup for the inputs, separated as to avoid a print issue when called by the other functions.
+// I have made my best attempt, and it is within the parameters of the PDF instructions. 
 
-double calculateFoundational()
+double calculatex1()
 {
-	double x1, y1, x2, y2, diameter;
+	double x1;
 	
 		printf("Enter the first point's x-value: ");
 		scanf("%lf", &x1);
+		return x1;
+}
+
+double calculatey1()
+{
+	double y1;
 	
 		printf("Enter the first point's y-value: ");
 		scanf("%lf", &y1);
-	
+		return y1;
+}
+
+double calculatex2()
+{
+	double x2;
+
 		printf("Enter the second point's x-value: ");
 		scanf("%lf", &x2);
+		return x2;
+}
+
+double calculatey2()
+{
+	double y2;
 	
 		printf("Enter the second point's y-value: ");
 		scanf("%lf", &y2);
+		return y2;
+}
 
-		printf("Point #1 entered: x1 = %.1lf; y1 = %.1lf\n", x1, y1);
-		printf("Point #2 entered: x2 = %.1lf; y2 = %.1lf\n", x2, y2);
+double calculateFoundational(double x1, double y1, double x2, double y2)
+{
+	double squaredx = (x2 - x1) * (x2 - x1);
+	double squaredy = (y2 - y1) * (y2 - y1);
 	
-		diameter = (sqrt((x2-x1)*(x2-x1))+((y2-y1)*(y2-y2)));
+	double diameter = sqrt(squaredx + squaredy);
 	
-		return diameter;
+	return diameter;
 }
 	
-// Now we create this first function.
+// Now we create the functions asked for. First, distance.
+
+double calculateDistance()
+{
+	double x1 = calculatex1();
+	double y1 = calculatey1();
+	double x2 = calculatex2();
+	double y2 = calculatey2();
+	double diameter = calculateFoundational(x1,y1,x2,y2);
+
+	printf("Point #1 entered: x1 = %.1lf; y1 = %.1lf\n", x1, y1);
+	printf("Point #2 entered: x2 = %.1lf; y2 = %.1lf\n", x2, y2);
+	printf("The distance between the two points is = %.1lf\n", diameter);
+	return diameter;
+}
+
+// If I have grossly misunderstood the assignment, I apologize, but as it stands this seems at best confusing
+// because the height and width of a circle is the same as its diameter.
 
 double calculateHeight()
 {
-	double diameter = calculateFoundational();
-	printf("The height is = %.1lf", diameter);
+	double x1 = calculatex1();
+	double y1 = calculatey1();
+	double x2 = calculatex2();
+	double y2 = calculatey2();
+	double diameter = calculateFoundational(x1,y1,x2,y2);
+
+	printf("Point #1 entered: x1 = %.1lf; y1 = %.1lf\n", x1, y1);
+	printf("Point #2 entered: x2 = %.1lf; y2 = %.1lf\n", x2, y2);
+	printf("The height of the city encompassed by your request is = %.1lf\n", diameter);
+	return 1;
+}
+
+double calculateWidth()
+{
+	double x1 = calculatex1();
+	double y1 = calculatey1();
+	double x2 = calculatex2();
+	double y2 = calculatey2();
+	double diameter = calculateFoundational(x1,y1,x2,y2);
+
+	printf("Point #1 entered: x1 = %.1lf; y1 = %.1lf\n", x1, y1);
+	printf("Point #2 entered: x2 = %.1lf; y2 = %.1lf\n", x2, y2);
+	printf("The width of the city encompassed by your request is = %.1lf\n", diameter);
+	return 1;
+}
+
+double calculateArea()
+{
+	double x1 = calculatex1();
+	double y1 = calculatey1();
+	double x2 = calculatex2();
+	double y2 = calculatey2();
+	double diameter = calculateFoundational(x1,y1,x2,y2);
+	double picalculation = PI * pow(diameter,2);
+	double area = picalculation/4;
+
+	printf("Point #1 entered: x1 = %.1lf; y1 = %.1lf\n", x1, y1);
+	printf("Point #2 entered: x2 = %.1lf; y2 = %.1lf\n", x2, y2);
+	printf("The area of the city encompassed by your request is = %.1lf\n", area);
+	return 3;
+}
+
+double calculatePerimeter()
+{
+	double x1 = calculatex1();
+	double y1 = calculatey1();
+	double x2 = calculatex2();
+	double y2 = calculatey2();
+	double diameter = calculateFoundational(x1,y1,x2,y2);
+	double perimeter = PI * diameter;
+
+	printf("Point #1 entered: x1 = %.1lf; y1 = %.1lf\n", x1, y1);
+	printf("Point #2 entered: x2 = %.1lf; y2 = %.1lf\n", x2, y2);
+	printf("The perimeter of the city encompassed by your request is = %.1lf\n", perimeter);
+	return 3;
 }
 
 
@@ -58,9 +150,12 @@ double calculateHeight()
 
 int main(int argc, char **argv)
 {
+	calculateDistance();
+	calculatePerimeter();
+	calculateArea();
+	calculateWidth();
 	calculateHeight();
-    
+
 	return 0;
 }
-
     
