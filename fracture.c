@@ -8,7 +8,7 @@
 // Output: Distance (diameter), Width (diameter), Height (diameter), Perimeter (circumference), Area (area, obviously).
 //********************************************************
 
-//Need this for input-output functions
+// Need this for input-output functions
 
 #include <stdio.h>
 #include <math.h>
